@@ -1,0 +1,165 @@
+/* Advanced Landing Page template */
+.aplb-page-section {
+  position: relative;
+  font-size: 18px;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  clear: both;
+}
+
+.aplb-page-section.light-text,
+.aplb-page-section.light-text :not(input):not(select) {
+  color: #fff;
+}
+
+.aplb-page-section.enable-shadow {
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.aplb .section-tint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.aplb .content {
+  position: relative;
+  z-index: 10;
+}
+
+.aplb .title,
+.aplb .subtitle {
+  text-align: center;
+}
+
+.aplb .subtitle {
+  font-style: italic;
+  margin-top: 0.25em;
+  font-size: 24px;
+}
+
+.aplb .title {
+  line-height: 1.2;
+}
+
+.aplb .title.has-subtitle {
+  margin-bottom: 0.25em;
+}
+
+.aplb h3 + p.hero {
+  top: 0;
+  margin-top: 48px;
+}
+
+.aplb-page-section p,
+.aplb-page-section ul,
+.aplb-page-section ol {
+  max-width: 650px;
+}
+
+.aplb-page-section .exempt-width,
+.aplb-page-section blockquote p {
+  max-width: none;
+}
+
+.aplb blockquote {
+  margin: 3em 0;
+  font-size: 20px;
+  text-align: center;
+}
+
+.aplb blockquote p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.aplb blockquote p + p {
+  margin-top: 16px;
+}
+
+.aplb blockquote cite {
+  display: block;
+  margin-top: 1em;
+  font-size: 80%;
+}
+
+.aplb .links {
+  font-size: 0;
+  overflow: hidden;
+  padding-bottom: 18px;
+  text-align: center;
+}
+
+.aplb .links a {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 0.4em 0.7em;
+  margin: 0.75em 0.5em;
+  color: #000;
+  font-size: 18px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
+}
+
+.aplb .light-text .links a {
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.aplb .links a:hover,
+.aplb .light-text .links a:hover {
+  color: #178552;
+  border-bottom-color: #178552;
+}
+
+.aplb .gf_form_center_wrapper ul {
+  text-align: center;
+}
+
+.aplb .gf_form_center_wrapper li {
+  text-align: left;
+}
+
+.aplb-page-section.center-paragraphs h1,
+.aplb-page-section.center-paragraphs h2,
+.aplb-page-section.center-paragraphs h3,
+.aplb-page-section.center-paragraphs h4,
+.aplb-page-section.center-paragraphs h5,
+.aplb-page-section.center-paragraphs h6,
+.aplb-page-section.center-paragraphs p,
+.aplb-page-section.center-paragraphs ol,
+.aplb-page-section.center-paragraphs ul,
+.aplb-page-section.center-paragraphs hr,
+.aplb-page-section.center-paragraphs .gform_wrapper {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aplb-page-section.center-paragraphs ol,
+.aplb-page-section.center-paragraphs ul {
+  max-width: 610px;
+  padding-left: 60px;
+}
+
+@media (min-width: 768px) {
+  .aplb .content-bottom-wrapper {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .aplb blockquote {
+    font-size: 24px;
+  }
+
+  .aplb .content-bottom-wrapper blockquote {
+    margin: 0;
+  }
+}

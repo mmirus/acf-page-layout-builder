@@ -1,0 +1,57 @@
+{
+  "name": "acf-page-layout-builder",
+  "version": "1.0.0",
+  "description":
+    "Plugin for using Advanced Custom Fields for building custom page layouts.",
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "no-empty-source": null,
+      "at-rule-no-unknown": [
+        true,
+        {
+          "ignoreAtRules": [
+            "extend",
+            "at-root",
+            "debug",
+            "warn",
+            "error",
+            "if",
+            "else",
+            "for",
+            "each",
+            "while",
+            "mixin",
+            "include",
+            "content",
+            "return",
+            "function"
+          ]
+        }
+      ],
+      "declaration-colon-newline-after": null,
+      "value-list-comma-newline-after": null
+    }
+  },
+  "scripts": {
+    "lint": "npm run -s lint:scripts && npm run -s lint:styles",
+    "lint:scripts": "eslint assets/**/*.js",
+    "lint:styles": "stylelint \"assets/**/*.{css,sass,scss,sss,less}\"",
+    "test": "npm run -s lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmirus/acf-page-layout-builder.git"
+  },
+  "author": "Matt Mirus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmirus/acf-page-layout-builder/issues"
+  },
+  "homepage": "https://github.com/mmirus/acf-page-layout-builder#readme",
+  "devDependencies": {
+    "eslint": "^4.18.2",
+    "stylelint": "^9.1.1",
+    "stylelint-config-standard": "^18.2.0"
+  }
+}

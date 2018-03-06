@@ -1,0 +1,143 @@
+/**
+ * Page Sections - space out and clean up
+ */
+#aplb-sections > .acf-input > .acf-repeater > .acf-table {
+  border-spacing: 0 2rem;
+  background: transparent;
+  border: 0;
+
+  --border-color: #e1e1e1;
+}
+
+/* Override border-spacing inheritance */
+.wp-editor-tools::after,
+.acf-image-uploader::after {
+  border-spacing: 0;
+}
+
+#aplb-sections > .acf-input > .acf-repeater > .acf-table > tbody > .acf-row {
+  box-shadow: 0 0 5px 0 #00222f23;
+}
+
+/* stylelint-disable selector-combinator-space-before */
+#aplb-sections
+> .acf-input
+> .acf-repeater
+> .acf-table
+> tbody
+> .acf-row
+> td {
+  /* stylelint-enable */
+  border-top: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* stylelint-disable selector-combinator-space-before */
+#aplb-sections
+> .acf-input
+> .acf-repeater
+> .acf-table
+> tbody
+> .acf-row
+> td.order {
+  /* stylelint-enable */
+  border-left: 1px solid var(--border-color);
+}
+
+/* stylelint-disable selector-combinator-space-before */
+#aplb-sections
+> .acf-input
+> .acf-repeater
+> .acf-table
+> tbody
+> .acf-row
+> td.remove {
+  /* stylelint-enable */
+  border-right: 1px solid var(--border-color);
+  border-left: 0;
+}
+
+/**
+ * end Page Sections
+ */
+
+/* Space out and clean up individual fields */
+#aplb-sections .acf-fields > .acf-field {
+  padding: 1rem 2rem;
+  border: 0;
+}
+
+/* Increase field label size */
+#aplb-sections .acf-fields > .acf-field .acf-label {
+  font-size: 1rem;
+}
+
+/**
+ * Page section titles
+ */
+#aplb-sections .acf-fields > .acf-field[data-name="title"] {
+  padding-top: 2rem;
+  padding-bottom: 0;
+}
+
+#aplb-sections .acf-fields > .acf-field[data-name="title"] .acf-label label {
+  font-weight: normal;
+}
+
+#aplb-sections .acf-field[data-name="title"] input[type="text"] {
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: auto;
+}
+
+/**
+ * end Page section titles
+ */
+
+/**
+ * Tabs
+ */
+#aplb-sections .acf-fields > .acf-tab-wrap {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  background: transparent;
+}
+
+#aplb-sections .acf-fields > .acf-tab-wrap .acf-tab-group {
+  border-top: 0;
+  padding: 0;
+  display: flex;
+}
+
+#aplb-sections .acf-fields > .acf-tab-wrap .acf-tab-group li {
+  flex-grow: 1;
+  margin: 0;
+}
+
+#aplb-sections .acf-fields > .acf-tab-wrap .acf-tab-group li a {
+  text-align: center;
+  border: 0 !important;
+  background: transparent;
+}
+
+#aplb-sections .acf-fields > .acf-tab-wrap .acf-tab-group li a:hover {
+  background: #0085ba29;
+}
+
+#aplb-sections .acf-fields > .acf-tab-wrap .acf-tab-group li.active a {
+  background: #0085ba;
+  color: #fff;
+}
+
+#aplb-sections .acf-fields > .acf-tab-wrap .acf-tab-group li.active a:hover {
+  background: #00709c;
+}
+
+/**
+ * end Tabs
+ */
+
+/* Space out fields inside flexible content layouts */
+#aplb-sections .acf-flexible-content .layout .acf-fields {
+  padding-top: 1rem;
+}
