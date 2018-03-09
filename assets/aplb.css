@@ -67,10 +67,12 @@
   max-width: none;
 }
 
-.aplb blockquote {
+.aplb blockquote.aplb-blockquote {
   margin: 3em 0;
+  background-color: transparent;
   font-size: 20px;
   text-align: center;
+  border: 0;
 }
 
 .aplb blockquote p {
@@ -88,19 +90,20 @@
   font-size: 80%;
 }
 
-.aplb .links {
+.aplb .aplb-links {
   font-size: 0;
   overflow: hidden;
   padding-bottom: 18px;
   text-align: center;
 }
 
-.aplb .links a {
+.aplb .aplb-links a {
   position: relative;
   box-sizing: border-box;
   display: inline-block;
-  padding: 0.4em 0.7em;
-  margin: 0.75em 0.5em;
+  min-width: 51%;
+  padding: 0.4em 0;
+  margin: 0.75em 0;
   color: #000;
   font-size: 18px;
   text-align: center;
@@ -108,12 +111,12 @@
   border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
 }
 
-.aplb .light-text .links a {
+.aplb .light-text .aplb-links a {
   border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 
-.aplb .links a:hover,
-.aplb .light-text .links a:hover {
+.aplb .aplb-links a:hover,
+.aplb .light-text .aplb-links a:hover {
   color: #178552;
   border-bottom-color: #178552;
 }
@@ -162,4 +165,14 @@
   .aplb .content-bottom-wrapper blockquote {
     margin: 0;
   }
+
+  .aplb .aplb-links a {
+    min-width: auto;
+    padding: 0.4em 0.7em;
+    margin: 0.75em 0.5em;
+  }
 }
+
+/**
+* bottom margin on list items?
+*/

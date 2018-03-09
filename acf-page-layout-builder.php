@@ -126,6 +126,16 @@ class APLB
 
         return $classes;
     }
+
+    public static function hex2rgb($hexString)
+    {
+        $hexString	= preg_replace("/[^abcdef0-9]/i", "", $hexString);
+        if (strlen($hexString) == 6) {
+            list($r, $g, $b) = str_split($hexString, 2);
+            return hexdec($r) . ", " . hexdec($g) . ", " . hexdec($b);
+        }
+        return false;
+    }
 }
 
 $aplb = new APLB();
