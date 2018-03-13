@@ -2,35 +2,45 @@
 
 Plugin for using Advanced Custom Fields for building custom page layouts.
 
+By default, the layouts you create are appended to the_content in your default page template. Commonly, you will wish to create a template file `page-aplb.php` in your theme to integrate the layout more nicely (e.g., display it full width or with reduced header elements). All you need to do is create a page template as you normally would and include `the_content()`.
+
+Note that if you change your template location (e.g., by overriding the template) you'll need to reselect it in the page editor.
+
+Thanks to [MWDelaney's similar plugin](https://github.com/MWDelaney/acf-flexible-content-blocks) for some insights how to implement this.
+
 # TODO
 
-* Make partials overridable
-* Refactor CSS
-  * use grid to replace AFP span classes; remove extra wrappers where possible
-  * use flexbox to align content at the bottom
+* Enable full-width WYSIWYG sections (see legacy giving form)
+* fix title + content bottom
+* Enable extending content types
 
 # Overriding the base template
 
 Create an `aplb` folder in your theme root and add a new `aplb-base.php` file to it.
 
-# Filtering the override template location and base template name
+# Filtering the templates
 
-If you want to override the templates and your theme houses its templates in a special location, you will need to use a filter to specify the correct location.
+This plugin uses [Gary Jones' template loader](https://github.com/GaryJones/Gamajo-Template-Loader). You can use the filters it provides to adjust things like the location of your override templates in your theme.
 
-You can also filter the base template filename if needed.
+## Example: Sage 9
 
-## Exmaple: Sage 9
+### Place override templates in Sage 9 `views` folder
 
 ```php
-add_filter('aplb_template_location', function ($template_folder) {
-    return "views/aplb/";
+add_filter('aplb_template_paths', function ($file_paths) {
+    $file_paths[0] = get_stylesheet_directory() . "/views/aplb/";
+    return $file_paths;
 });
 ```
 
-If you want to use Blade for the templates, you will additionally need to filter the base template name:
+### Use Blade
 
 ```php
-add_filter('aplb_template_name', function ($template_name) {
-    return "aplb-base.blade.php";
+add_filter('aplb_get_template_part', function ($templates, $slug = null, $name = null) {
+    $blade_templates = array_map(function ($template) {
+        return str_replace('.php', '.blade.php', $template);
+    }, $templates);
+
+    return array_merge($blade_templates, $templates);
 });
 ```

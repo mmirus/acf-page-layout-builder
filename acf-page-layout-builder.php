@@ -11,11 +11,15 @@ GitHub Plugin URI: https://github.com/mmirus/acf-page-layout-builder
 
 namespace APLB;
 
+define('APLB_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('APLB_PLUGIN_URL', plugin_dir_url(__FILE__));
+
+require_once APLB_PLUGIN_DIR . 'lib/class-aplb-template-loader.php';
+
 class APLB
 {
-    public function __construct()
-    {
-    }
+    public $page_template;
+    public $template_loader;
 
     public function init()
     {
@@ -23,12 +27,18 @@ class APLB
         add_action('plugins_loaded', [$this, 'acf_check']);
         add_action('wp_enqueue_scripts', [$this, 'assets'], 100);
         add_action('admin_enqueue_scripts', [$this, 'admin_assets']);
+        add_action('after_setup_theme', [$this, 'set_page_template'], 10);
+        add_action('after_setup_theme', [$this, 'register_fields'], 11);
 
         // filters
-        add_filter('acf/settings/load_json', [$this, 'acf_add_json_load_point']);
+        // add_filter('acf/settings/load_json', [$this, 'acf_add_json_load_point']);
         add_filter('theme_page_templates', [$this, 'add_page_template_option'], 10, 3);
-        add_filter('page_template', [$this, 'add_default_templates']);
+        add_filter('the_content', [$this, 'display']);
         add_filter('body_class', [$this, 'add_body_class']);
+
+        add_shortcode('aplb', [$this, 'shortcode']);
+
+        $this->template_loader = new Template_Loader();
     }
 
     // Check if Advanced Custom Fields is loaded and deactivate w/ a message if not
@@ -55,8 +65,8 @@ class APLB
     // enqueue assets
     public function assets()
     {
-        if (is_page_template('aplb-base.php')) {
-            wp_enqueue_style('aplb_base', plugin_dir_url(__FILE__).'assets/aplb.css', false, null);
+        if (is_page_template($this->page_template)) {
+            wp_enqueue_style('aplb_base', APLB_PLUGIN_URL.'assets/aplb.css', false, null);
         }
     }
 
@@ -69,62 +79,57 @@ class APLB
             return false;
         }
 
-        if (get_post_meta($post->ID, '_wp_page_template', true) === 'aplb-base.php') {
+        if (get_post_meta($post->ID, '_wp_page_template', true) === $this->page_template) {
             wp_enqueue_style('aplb_admin', plugins_url('assets/admin.css', __FILE__));
         }
     }
 
-    // Append this plugin's ACF JSON field definitions load point to list of load points
-    public function acf_add_json_load_point($paths)
+    // set page_template (done here to allow themes to filter the path and name)
+    public function set_page_template()
     {
-        $paths[] = plugin_dir_path(__FILE__) . '/acf-json';
+        $template = $this->template_loader->get_template_part('page-aplb', null, false);
+        $template = ($template === 'templates/aplb/page-aplb.php') ? false : $template;
+        $this->page_template = ($template) ? str_replace(get_stylesheet_directory() . '/', '', $template) : 'page-aplb.php';
+    }
 
-        return $paths;
+    // register ACF field group
+    public function register_fields()
+    {
+        require_once APLB_PLUGIN_DIR . 'lib/fields.php';
     }
 
     public function add_page_template_option($page_templates, $theme, $post)
     {
-        $page_templates['aplb-base.php'] = 'ACF Page Layout Builder';
+        $page_templates[$this->page_template] = 'ACF Page Layout Builder';
 
         return $page_templates;
     }
 
-    // add default templates
-    public function add_default_templates($template)
+    public function display(string $content)
     {
         global $post;
 
-        $template_name = 'aplb-base.php';
-
-        if (get_page_template_slug($post->ID) !== $template_name) {
-            return $template;
+        if (get_page_template_slug($post->ID) === $this->page_template) {
+            return $content . '[aplb]';
         }
 
-        // filter theme override template name and location
-        $template_name = apply_filters('aplb_template_name', "aplb-base.php");
-        $template_location = apply_filters('aplb_template_location', "aplb/");
-
-        $theme_template = $template_location . $template_name;
-
-        // Check if a custom template exists in the theme folder, if not, load the plugin template file
-        $theme_file = locate_template(array($theme_template));
-
-        if ($theme_file) {
-            $template = $theme_file;
-        } else {
-            $template = dirname(__FILE__) . '/templates/' . $template_name;
-        }
-
-        return $template;
+        return $content;
     }
 
     public function add_body_class(array $classes)
     {
-        if (is_page_template('aplb-base.php')) {
+        if (is_page_template($this->page_template)) {
             $classes[] = 'aplb';
         }
 
         return $classes;
+    }
+
+    public function shortcode()
+    {
+        ob_start();
+        $this->template_loader->get_template_part('aplb-base');
+        return ob_get_clean();
     }
 
     public static function hex2rgb($hexString)
