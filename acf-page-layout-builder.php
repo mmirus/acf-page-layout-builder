@@ -31,7 +31,6 @@ class APLB
         add_action('after_setup_theme', [$this, 'register_fields'], 11);
 
         // filters
-        // add_filter('acf/settings/load_json', [$this, 'acf_add_json_load_point']);
         add_filter('theme_page_templates', [$this, 'add_page_template_option'], 10, 3);
         add_filter('the_content', [$this, 'display']);
         add_filter('body_class', [$this, 'add_body_class']);
