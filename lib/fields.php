@@ -3,11 +3,11 @@
 global $aplb;
 
 acf_add_local_field_group(array(
-    'key' => 'group_58a223eed5e52',
+    'key' => 'aplb_acf',
     'title' => 'ACF Page Layout Builder',
     'fields' => array(
         array(
-            'key' => 'field_58a2255056fe3',
+            'key' => 'aplb_page_sections',
             'label' => 'Page Sections',
             'name' => 'page_section',
             'type' => 'repeater',
@@ -19,14 +19,14 @@ acf_add_local_field_group(array(
                 'class' => '',
                 'id' => 'aplb-sections',
             ),
-            'collapsed' => 'field_58a225e356fe7',
+            'collapsed' => 'aplb_section_title',
             'min' => 1,
             'max' => 0,
             'layout' => 'block',
             'button_label' => '',
             'sub_fields' => array(
                 array(
-                    'key' => 'field_58a225e356fe7',
+                    'key' => 'aplb_section_title',
                     'label' => 'Section Title',
                     'name' => 'title',
                     'type' => 'text',
@@ -45,7 +45,7 @@ acf_add_local_field_group(array(
                     'append' => '',
                 ),
                 array(
-                    'key' => 'field_58a263c7e5aa0',
+                    'key' => 'aplb_main_tab',
                     'label' => 'Main',
                     'name' => '',
                     'type' => 'tab',
@@ -61,7 +61,7 @@ acf_add_local_field_group(array(
                     'endpoint' => 0,
                 ),
                 array(
-                    'key' => 'field_58a2261956fe8',
+                    'key' => 'aplb_display_title',
                     'label' => 'Display Title?',
                     'name' => 'display_title',
                     'type' => 'true_false',
@@ -80,7 +80,7 @@ acf_add_local_field_group(array(
                     'ui_off_text' => '',
                 ),
                 array(
-                    'key' => 'field_58a228a2d26d2',
+                    'key' => 'aplb_subtitle',
                     'label' => 'Subtitle',
                     'name' => 'subtitle',
                     'type' => 'text',
@@ -89,7 +89,7 @@ acf_add_local_field_group(array(
                     'conditional_logic' => array(
                         array(
                             array(
-                                'field' => 'field_58a2261956fe8',
+                                'field' => 'aplb_display_title',
                                 'operator' => '==',
                                 'value' => '1',
                             ),
@@ -107,7 +107,7 @@ acf_add_local_field_group(array(
                     'append' => '',
                 ),
                 array(
-                    'key' => 'field_58a23c15acf41',
+                    'key' => 'aplb_min_height',
                     'label' => 'Minimum Height',
                     'name' => 'minimum_height',
                     'type' => 'text',
@@ -126,7 +126,26 @@ acf_add_local_field_group(array(
                     'append' => '',
                 ),
                 array(
-                    'key' => 'field_58a4b1a58afa9',
+                    'key' => 'aplb_custom_max_width',
+                    'label' => 'Custom Max Width',
+                    'name' => 'custom_max_width',
+                    'type' => 'text',
+                    'instructions' => 'Applies to the title and contents; use prudently. Reserve it for special content, rather than normal WYSIWYG content. If used on more than one section, try to be consistent (e.g., have one width for wide rows and use the default width for the other rows).',
+                    'required' => 0,
+                    'conditional_logic' => 0,
+                    'wrapper' => array(
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ),
+                    'default_value' => '',
+                    'placeholder' => '',
+                    'prepend' => '',
+                    'append' => '',
+                    'maxlength' => '',
+                ),
+                array(
+                    'key' => 'aplb_content_at_bottom',
                     'label' => 'Content at bottom?',
                     'name' => 'content_at_bottom',
                     'type' => 'true_false',
@@ -145,7 +164,7 @@ acf_add_local_field_group(array(
                     'ui_off_text' => '',
                 ),
                 array(
-                    'key' => 'field_58a2531ea296a',
+                    'key' => 'aplb_light_text',
                     'label' => 'Light Text?',
                     'name' => 'light_text',
                     'type' => 'true_false',
@@ -164,7 +183,7 @@ acf_add_local_field_group(array(
                     'ui_off_text' => '',
                 ),
                 array(
-                    'key' => 'field_58a5f2ca3e17c',
+                    'key' => 'aplb_enable_shadow',
                     'label' => 'Enable shadow?',
                     'name' => 'enable_shadow',
                     'type' => 'true_false',
@@ -183,7 +202,7 @@ acf_add_local_field_group(array(
                     'ui_off_text' => '',
                 ),
                 array(
-                    'key' => 'field_58a263f9e5aa1',
+                    'key' => 'aplb_background',
                     'label' => 'Background',
                     'name' => '',
                     'type' => 'tab',
@@ -199,7 +218,7 @@ acf_add_local_field_group(array(
                     'endpoint' => 0,
                 ),
                 array(
-                    'key' => 'field_58a2255d56fe4',
+                    'key' => 'aplb_background_image',
                     'label' => 'Background Image',
                     'name' => 'background_image',
                     'type' => 'image',
@@ -223,7 +242,7 @@ acf_add_local_field_group(array(
                     'mime_types' => 'jpg,jpeg',
                 ),
                 array(
-                    'key' => 'field_58a2259a56fe5',
+                    'key' => 'aplb_background_color',
                     'label' => 'Background Color',
                     'name' => 'background_color',
                     'type' => 'color_picker',
@@ -238,7 +257,7 @@ acf_add_local_field_group(array(
                     'default_value' => '',
                 ),
                 array(
-                    'key' => 'field_58a225b356fe6',
+                    'key' => 'aplb_background_color_opacity',
                     'label' => 'Background Color Opacity',
                     'name' => 'background_color_opacity',
                     'type' => 'number',
@@ -259,7 +278,7 @@ acf_add_local_field_group(array(
                     'append' => '',
                 ),
                 array(
-                    'key' => 'field_58a2547f96057',
+                    'key' => 'aplb_background_color_bottom_gradient',
                     'label' => 'Background Color Bottom Gradient?',
                     'name' => 'background_color_bottom_gradient',
                     'type' => 'true_false',
@@ -278,7 +297,7 @@ acf_add_local_field_group(array(
                     'ui_off_text' => '',
                 ),
                 array(
-                    'key' => 'field_58a497b09f0f8',
+                    'key' => 'aplb_mobile_background_note',
                     'label' => 'Note about background gradient and opacity on mobile',
                     'name' => '',
                     'type' => 'message',
@@ -295,7 +314,7 @@ acf_add_local_field_group(array(
                     'new_lines' => 'wpautop',
                 ),
                 array(
-                    'key' => 'field_58a26425e5aa2',
+                    'key' => 'aplb_content_tab',
                     'label' => 'Content',
                     'name' => '',
                     'type' => 'tab',
@@ -311,7 +330,7 @@ acf_add_local_field_group(array(
                     'endpoint' => 0,
                 ),
                 array(
-                    'key' => 'field_58a22722cd514',
+                    'key' => 'aplb_flex_content',
                     'label' => 'Content',
                     'name' => 'content',
                     'type' => 'flexible_content',
@@ -324,14 +343,14 @@ acf_add_local_field_group(array(
                         'id' => '',
                     ),
                     'layouts' => array(
-                        '58a2277b64541' => array(
-                            'key' => '58a2277b64541',
+                        'aplb_flex_layout_wysiwyg' => array(
+                            'key' => 'aplb_flex_layout_wysiwyg',
                             'name' => 'wysiwyg',
                             'label' => 'WYSIWYG',
                             'display' => 'block',
                             'sub_fields' => array(
                                 array(
-                                    'key' => 'field_58a227c1cd515',
+                                    'key' => 'aplb_content_wysiwyg',
                                     'label' => 'Content',
                                     'name' => 'content_wysiwyg',
                                     'type' => 'wysiwyg',
@@ -353,33 +372,14 @@ acf_add_local_field_group(array(
                             'min' => '',
                             'max' => '',
                         ),
-                        '58a49cdba3863' => array(
-                            'key' => '58a49cdba3863',
+                        'aplb_content_quote' => array(
+                            'key' => 'aplb_content_quote',
                             'name' => 'quote',
                             'label' => 'Quote',
                             'display' => 'block',
                             'sub_fields' => array(
                                 array(
-                                    'key' => 'field_58a4b0dd89580',
-                                    'label' => 'Position at bottom?',
-                                    'name' => 'position_at_bottom',
-                                    'type' => 'true_false',
-                                    'instructions' => '',
-                                    'required' => 0,
-                                    'conditional_logic' => 0,
-                                    'wrapper' => array(
-                                        'width' => '',
-                                        'class' => '',
-                                        'id' => '',
-                                    ),
-                                    'default_value' => 0,
-                                    'message' => '',
-                                    'ui' => 1,
-                                    'ui_on_text' => '',
-                                    'ui_off_text' => '',
-                                ),
-                                array(
-                                    'key' => 'field_58a49ce3a3864',
+                                    'key' => 'aplb_quote',
                                     'label' => 'Quote',
                                     'name' => 'quote',
                                     'type' => 'text',
@@ -398,7 +398,7 @@ acf_add_local_field_group(array(
                                     'append' => '',
                                 ),
                                 array(
-                                    'key' => 'field_58a49cfba3865',
+                                    'key' => 'aplb_citation',
                                     'label' => 'Citation',
                                     'name' => 'citation',
                                     'type' => 'text',
@@ -420,14 +420,14 @@ acf_add_local_field_group(array(
                             'min' => '',
                             'max' => '',
                         ),
-                        '58a5f1fc01977' => array(
-                            'key' => '58a5f1fc01977',
+                        'aplb_content_links' => array(
+                            'key' => 'aplb_content_links',
                             'name' => 'links',
                             'label' => 'Links',
                             'display' => 'block',
                             'sub_fields' => array(
                                 array(
-                                    'key' => 'field_58a5f20101978',
+                                    'key' => 'aplb_links',
                                     'label' => 'Links',
                                     'name' => 'links',
                                     'type' => 'repeater',
@@ -443,10 +443,10 @@ acf_add_local_field_group(array(
                                     'max' => 0,
                                     'layout' => 'table',
                                     'button_label' => '',
-                                    'collapsed' => 'field_58a5f2350197a',
+                                    'collapsed' => 'aplb_link_name',
                                     'sub_fields' => array(
                                         array(
-                                            'key' => 'field_58a5f2350197a',
+                                            'key' => 'aplb_link_name',
                                             'label' => 'Name',
                                             'name' => 'name',
                                             'type' => 'text',
@@ -465,7 +465,7 @@ acf_add_local_field_group(array(
                                             'append' => '',
                                         ),
                                         array(
-                                            'key' => 'field_58a5f20601979',
+                                            'key' => 'aplb_link_url',
                                             'label' => 'URL',
                                             'name' => 'url',
                                             'type' => 'url',
@@ -481,7 +481,7 @@ acf_add_local_field_group(array(
                                             'placeholder' => '',
                                         ),
                                         array(
-                                            'key' => 'field_58a5f24f0197b',
+                                            'key' => 'aplb_link_open_in_new_tab',
                                             'label' => 'Open in new tab?',
                                             'name' => 'open_in_new_tab',
                                             'type' => 'true_false',
@@ -505,6 +505,126 @@ acf_add_local_field_group(array(
                             'min' => '',
                             'max' => '',
                         ),
+                        array(
+                            'key' => 'aplb_accordion',
+                            'name' => 'accordion',
+                            'label' => 'Accordion (discouraged)',
+                            'display' => 'block',
+                            'sub_fields' => array(
+                                array(
+                                    'key' => 'aplb_accordion_item_title_alignment',
+                                    'label' => 'Item Title Alignment',
+                                    'name' => 'item_title_alignment',
+                                    'type' => 'select',
+                                    'instructions' => '',
+                                    'required' => 0,
+                                    'conditional_logic' => 0,
+                                    'wrapper' => array(
+                                        'width' => '',
+                                        'class' => '',
+                                        'id' => '',
+                                    ),
+                                    'choices' => array(
+                                        'Left' => 'Left',
+                                        'Center' => 'Center',
+                                    ),
+                                    'default_value' => array(
+                                        0 => 'Left',
+                                    ),
+                                    'allow_null' => 0,
+                                    'multiple' => 0,
+                                    'ui' => 0,
+                                    'ajax' => 0,
+                                    'return_format' => 'value',
+                                    'placeholder' => '',
+                                ),
+                                array(
+                                    'key' => 'aplb_accordion_items',
+                                    'label' => 'Accordion Items',
+                                    'name' => 'accordion_items',
+                                    'type' => 'repeater',
+                                    'instructions' => '',
+                                    'required' => 0,
+                                    'conditional_logic' => 0,
+                                    'wrapper' => array(
+                                        'width' => '',
+                                        'class' => '',
+                                        'id' => '',
+                                    ),
+                                    'min' => 0,
+                                    'max' => 0,
+                                    'layout' => 'row',
+                                    'button_label' => '',
+                                    'collapsed' => 'aplb_accordion_item_title',
+                                    'sub_fields' => array(
+                                        array(
+                                            'key' => 'aplb_accordion_item_title',
+                                            'label' => 'Title',
+                                            'name' => 'title',
+                                            'type' => 'text',
+                                            'instructions' => '',
+                                            'required' => 1,
+                                            'conditional_logic' => 0,
+                                            'wrapper' => array(
+                                                'width' => '',
+                                                'class' => '',
+                                                'id' => '',
+                                            ),
+                                            'default_value' => '',
+                                            'maxlength' => '',
+                                            'placeholder' => '',
+                                            'prepend' => '',
+                                            'append' => '',
+                                        ),
+                                        array(
+                                            'key' => 'aplb_accordion_item_icon',
+                                            'label' => 'Title Icon',
+                                            'name' => 'title_icon',
+                                            'type' => 'image',
+                                            'instructions' => '',
+                                            'required' => 0,
+                                            'conditional_logic' => 0,
+                                            'wrapper' => array(
+                                                'width' => '',
+                                                'class' => '',
+                                                'id' => '',
+                                            ),
+                                            'return_format' => 'url',
+                                            'preview_size' => 'thumbnail',
+                                            'library' => 'all',
+                                            'min_width' => '',
+                                            'min_height' => '',
+                                            'min_size' => '',
+                                            'max_width' => '',
+                                            'max_height' => '',
+                                            'max_size' => '',
+                                            'mime_types' => '',
+                                        ),
+                                        array(
+                                            'key' => 'aplb_accordion_item_content',
+                                            'label' => 'Content',
+                                            'name' => 'content',
+                                            'type' => 'wysiwyg',
+                                            'instructions' => '',
+                                            'required' => 1,
+                                            'conditional_logic' => 0,
+                                            'wrapper' => array(
+                                                'width' => '',
+                                                'class' => '',
+                                                'id' => '',
+                                            ),
+                                            'tabs' => 'all',
+                                            'toolbar' => 'full',
+                                            'media_upload' => 1,
+                                            'default_value' => '',
+                                            'delay' => 0,
+                                        ),
+                                    ),
+                                ),
+                            ),
+                            'min' => '',
+                            'max' => '',
+                        ),
                     ),
                     'button_label' => 'Add Row',
                     'min' => '',
@@ -513,7 +633,7 @@ acf_add_local_field_group(array(
             ),
         ),
         array(
-            'key' => 'field_58a490f9cf825',
+            'key' => 'aplb_custom_css',
             'label' => 'Custom CSS',
             'name' => 'custom_css',
             'type' => 'textarea',

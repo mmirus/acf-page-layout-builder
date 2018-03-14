@@ -6,9 +6,8 @@ Thanks to [MWDelaney's similar plugin](https://github.com/MWDelaney/acf-flexible
 
 # TODO
 
-* Enable full-width WYSIWYG sections (see legacy giving form)
-* fix title + content bottom
 * Enable extending content types
+* filter SEO title?
 
 # Overriding the page template
 

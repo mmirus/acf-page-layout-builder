@@ -28,7 +28,7 @@ class APLB
         add_action('wp_enqueue_scripts', [$this, 'assets'], 100);
         add_action('admin_enqueue_scripts', [$this, 'admin_assets']);
         add_action('after_setup_theme', [$this, 'set_page_template'], 10);
-        add_action('after_setup_theme', [$this, 'register_fields'], 11);
+        // add_action('after_setup_theme', [$this, 'register_fields'], 11);
 
         // filters
         add_filter('theme_page_templates', [$this, 'add_page_template_option'], 10, 3);

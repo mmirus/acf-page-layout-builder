@@ -1,6 +1,10 @@
 /* Base styles */
 .aplb-page-section {
   position: relative;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: minmax(0, 1fr) minmax(1rem, 50em) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(1rem, 50em) minmax(0, 1fr);
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: center top;
@@ -29,17 +33,25 @@
 .aplb-title,
 .aplb-page-section .content {
   position: relative;
+  -ms-grid-column: 2;
+  grid-column: 2;
   padding: 5rem 1rem;
   overflow: hidden;
   z-index: 10;
 }
 
-/* Titles and subtitles */
 .aplb-title {
-  max-width: 50rem;
-  margin: 0 auto;
+  -ms-grid-column: 1 / 4;
+  grid-column: 1 / 4;
+  padding-bottom: 0;
+  margin: auto auto 0;
 }
 
+.aplb-title + .content {
+  padding-top: 0;
+}
+
+/* Titles and subtitles */
 .aplb .title,
 .aplb .subtitle {
   text-align: center;
@@ -67,34 +79,11 @@
 
 /* WYSIWYG */
 .aplb-wysiwyg {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: minmax(0, 1fr) minmax(1rem, 40em) minmax(0, 1fr);
-  grid-template-columns: minmax(0, 1fr) minmax(1rem, 40em) minmax(0, 1fr);
-}
-
-.aplb-wysiwyg .aplb-title {
-  -ms-grid-column: 1 / 4;
-  grid-column: 1 / 4;
-  padding-bottom: 0;
-}
-
-.aplb-wysiwyg .content {
-  -ms-grid-column: 2;
-  grid-column: 2;
-}
-
-.aplb-wysiwyg .aplb-title + .content {
-  padding-top: 0;
+  -ms-grid-columns: minmax(0, 1fr) minmax(1rem, 35em) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(1rem, 35em) minmax(0, 1fr);
 }
 
 /* Quote */
-.aplb-quote .content {
-  max-width: 50rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .aplb-quote .aplb-blockquote {
   padding: 0;
   border: 0;
@@ -119,7 +108,6 @@
 
 /* Links */
 .aplb .aplb-links {
-  font-size: 0;
   overflow: hidden;
   padding-bottom: 1rem;
   text-align: center;
@@ -133,7 +121,6 @@
   padding: 0.4rem 0;
   margin: 0.75rem 0;
   color: #000;
-  font-size: 1rem;
   text-align: center;
   vertical-align: middle;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
@@ -150,9 +137,20 @@
 }
 
 @media (min-width: 768px) {
+  .content-bottom {
+    grid-template-rows: 1fr;
+  }
+
   .content-bottom .content {
     padding: 1rem;
-    margin-top: auto;
+  }
+
+  .content-bottom .aplb-title + .content {
+    margin-top: 0;
+  }
+
+  .content-bottom .aplb-blockquote {
+    margin-bottom: 1rem;
   }
 
   .aplb-quote .aplb-blockquote {

@@ -9,6 +9,7 @@ if (have_rows('page_section')):
     while (have_rows('page_section')) : the_row();
         $row_id = $row_id_base . get_row_index();
         $minimum_height = get_sub_field('minimum_height');
+        $max_width = get_sub_field('custom_max_width');
         $background_image = get_sub_field('background_image');
         $background_color = get_sub_field('background_color');
         $background_color_opacity = get_sub_field('background_color_opacity');
@@ -23,14 +24,19 @@ if (have_rows('page_section')):
 
         $background_image = (!empty($background_image)) ? "background-image: url($background_image);" : '';
         $minimum_height = (!empty($minimum_height)) ? "min-height: $minimum_height;" : '';
+        $max_width_css = (!empty($max_width)) ? "-ms-grid-columns: minmax(0, 1fr) minmax(1rem, $max_width) minmax(0, 1fr); grid-template-columns: minmax(0, 1fr) minmax(1rem, $max_width) minmax(0, 1fr);" : '';
         $background_color = (!empty($background_color)) ? "background: $background_color;": '';
         $opacity = ($background_color_bottom_gradient) ? '0.6' : $background_color_opacity;
         $background_color_opacity = (!empty($background_color_opacity)) ? "opacity: $opacity;": '';
 
         $aplb_styles .= "
-            #$row_id { $background_image $minimum_height z-index: $z_index; }
+            #$row_id { $background_image $minimum_height $max_width_css z-index: $z_index; }
             #$row_id .section-tint { $background_color $background_color_opacity }
         ";
+
+        if (!empty($max_width)) {
+            $aplb_styles .= "#$row_id .aplb-title { max-width: $max_width }";
+        }
 
         if ($background_color_bottom_gradient) {
             $aplb_mq_styles .= "#$row_id .section-tint { background: $background_gradient; opacity: 1; }";
