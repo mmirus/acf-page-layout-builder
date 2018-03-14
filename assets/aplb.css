@@ -143,6 +143,7 @@
 
   .content-bottom .content {
     padding: 1rem;
+    align-self: end;
   }
 
   .content-bottom .aplb-title + .content {
