@@ -1,3 +1,7 @@
+#### 0.4 / 2018-03-23
+
+* Add body class on CPTs
+
 #### 0.3 / 2018-03-22
 
 * Add option to use custom post type
