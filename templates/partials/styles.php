@@ -4,7 +4,7 @@ namespace APLB;
 if (have_rows('page_section')):
     $aplb_styles = '';
     $aplb_mq_styles = '';
-    $row_id_base = 'alp_rep_';
+    $row_id_base = 'aplb_rep_';
     $z_index = count(get_field('page_section'));
     while (have_rows('page_section')) : the_row();
         $row_id = $row_id_base . get_row_index();
