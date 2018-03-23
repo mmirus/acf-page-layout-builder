@@ -1,4 +1,4 @@
-# ACF Page Layout Builder
+# ACF Page Layout Builder (APLB)
 
 Plugin for using Advanced Custom Fields for building custom page layouts.
 
@@ -6,8 +6,20 @@ Thanks to [MWDelaney's similar plugin](https://github.com/MWDelaney/acf-flexible
 
 # TODO
 
+* Replace the_content instead of appending to it?
 * Enable extending content types
 * filter SEO title?
+* document adding taxonomies to CPT?
+* look into changing or enabling filtering of CPT slug (/aplb/post-name/)?
+* allow overriding templates per post type?
+
+# Table of Contents
+
+* [Overriding the page template](#overriding-the-page-template)
+* [Overriding template parts](#overriding-template-parts)
+* [Filtering the templates](#filtering-the-templates)
+  * [Example: Sage 9](#example-sage-9)
+* [Using APLB with other post types](#using-aplb-with-other-post-types)
 
 # Overriding the page template
 
@@ -45,3 +57,20 @@ add_filter('aplb_get_template_part', function ($templates, $slug = null, $name =
     return array_merge($blade_templates, $templates);
 });
 ```
+
+# Using APLB with other post types
+
+By default, APLB is only available for pages. As a secondary option, you can enable the APLB custom post type on the settings page.
+
+_As with anytime you register a CPT, make sure to flush your permalinks after enabling the APLB CPT. (Setthings -> Permalinks -> Save.)_
+
+If you want to use it with your own post type, you can filter `aplb_post_types`:
+
+```php
+add_filter('aplb_post_types', function ($post_types) {
+    $post_types[] = 'my-post-type';
+    return $post_types;
+});
+```
+
+As noted in the section on overriding template parts above, by default the layouts you create are appended to the_content in your default page template. When the layouts are built on another post type besides pages, however, the output will by default be appended to the_content in the template used for that post type following the WordPress template hierarchy.

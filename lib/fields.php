@@ -2,7 +2,7 @@
 
 global $aplb;
 
-acf_add_local_field_group(array(
+$field_group_options = array(
     'key' => 'aplb_acf',
     'title' => 'ACF Page Layout Builder',
     'fields' => array(
@@ -673,4 +673,16 @@ Do not include opening/closing style tags.',
     ),
     'active' => 1,
     'description' => '',
-));
+);
+
+foreach ($aplb->post_types as $post_type) {
+    $field_group_options['location'][] = array(
+        array(
+            'param' => 'post_type',
+            'operator' => '==',
+            'value' => $post_type,
+        ),
+    );
+}
+
+acf_add_local_field_group($field_group_options);

@@ -5,7 +5,7 @@ Plugin URI: https://github.com/mmirus/acf-page-layout-builder
 Description: Plugin for using Advanced Custom Fields for building custom page layouts.
 Author: Matt Mirus
 Author URI: https://github.com/mmirus
-Version: 0.2
+Version: 0.3
 GitHub Plugin URI: https://github.com/mmirus/acf-page-layout-builder
 */
 
@@ -20,15 +20,19 @@ class APLB
 {
     public $page_template;
     public $template_loader;
+    public $post_types;
 
     public function init()
     {
         // actions
         add_action('plugins_loaded', [$this, 'acf_check']);
+        add_action('plugins_loaded', [$this, 'register_options']);
+        add_action('after_setup_theme', [$this, 'set_page_template'], 10);
+        add_action('after_setup_theme', [$this, 'set_post_types'], 10);
+        add_action('after_setup_theme', [$this, 'register_fields'], 11);
+        add_action('init', [$this, 'register_post_type']);
         add_action('wp_enqueue_scripts', [$this, 'assets'], 100);
         add_action('admin_enqueue_scripts', [$this, 'admin_assets']);
-        add_action('after_setup_theme', [$this, 'set_page_template'], 10);
-        add_action('after_setup_theme', [$this, 'register_fields'], 11);
 
         // filters
         add_filter('theme_page_templates', [$this, 'add_page_template_option'], 10, 3);
@@ -61,10 +65,46 @@ class APLB
         printf('<div class="error notice is-dismissible"><p class="extension-message"><strong>Advanced Custom Fields Pro</strong> is required for the ACF Page Layout Builder plugin. Deactivating the <strong>ACF Page Layout Builder</strong> plugin.</p></div>');
     }
 
+    // register options page
+    public function register_options()
+    {
+        if (class_exists('acf')) {
+            require_once APLB_PLUGIN_DIR . 'lib/options.php';
+        }
+    }
+
+    // set page_template (done here to allow themes to filter the path and name)
+    public function set_page_template()
+    {
+        $template = $this->template_loader->get_template_part('page-aplb', null, false);
+        $template = ($template === 'templates/aplb/page-aplb.php') ? false : $template;
+        $this->page_template = ($template) ? str_replace(get_stylesheet_directory() . '/', '', $template) : 'page-aplb.php';
+    }
+
+    // set enabled post types (besides Pages)
+    public function set_post_types()
+    {
+        $this->post_types = apply_filters('aplb_post_types', ['aplb']);
+    }
+
+    // register ACF field group
+    public function register_fields()
+    {
+        if (class_exists('acf')) {
+            require_once APLB_PLUGIN_DIR . 'lib/fields.php';
+        }
+    }
+
+    // register APLB custom post type
+    public function register_post_type()
+    {
+        require_once APLB_PLUGIN_DIR . 'lib/aplb-post-type.php';
+    }
+
     // enqueue assets
     public function assets()
     {
-        if (is_page_template($this->page_template)) {
+        if (is_page_template($this->page_template) || is_singular($this->post_types)) {
             wp_enqueue_style('aplb_base', APLB_PLUGIN_URL.'assets/aplb.css', false, null);
         }
     }
@@ -83,22 +123,6 @@ class APLB
         }
     }
 
-    // set page_template (done here to allow themes to filter the path and name)
-    public function set_page_template()
-    {
-        $template = $this->template_loader->get_template_part('page-aplb', null, false);
-        $template = ($template === 'templates/aplb/page-aplb.php') ? false : $template;
-        $this->page_template = ($template) ? str_replace(get_stylesheet_directory() . '/', '', $template) : 'page-aplb.php';
-    }
-
-    // register ACF field group
-    public function register_fields()
-    {
-        if (class_exists('acf')) {
-            require_once APLB_PLUGIN_DIR . 'lib/fields.php';
-        }
-    }
-
     public function add_page_template_option($page_templates, $theme, $post)
     {
         $page_templates[$this->page_template] = 'ACF Page Layout Builder';
@@ -110,7 +134,7 @@ class APLB
     {
         global $post;
 
-        if (get_page_template_slug($post->ID) === $this->page_template) {
+        if (get_page_template_slug($post->ID) === $this->page_template || is_singular($this->post_types)) {
             return $content . '[aplb]';
         }
 

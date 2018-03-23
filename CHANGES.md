@@ -1,4 +1,8 @@
-#### 0.2 / 2018-03-13
+#### 0.3 / 2018-03-22
+
+* Add option to use custom post type
+
+#### 0.2 / 2018-03-21
 
 * Check for ACF before registering fields
 
