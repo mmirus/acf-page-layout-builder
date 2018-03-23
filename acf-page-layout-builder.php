@@ -112,13 +112,13 @@ class APLB
     // load admin assets
     public function admin_assets($hook)
     {
-        global $post;
+        global $post, $current_screen;
 
         if (!$post) {
             return false;
         }
 
-        if (get_post_meta($post->ID, '_wp_page_template', true) === $this->page_template) {
+        if (get_post_meta($post->ID, '_wp_page_template', true) === $this->page_template || in_array($current_screen->post_type, $this->post_types)) {
             wp_enqueue_style('aplb_admin', plugins_url('assets/admin.css', __FILE__));
         }
     }

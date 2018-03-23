@@ -2,6 +2,7 @@
 
 * Add body class on CPTs
 * Fix base row ID prefix
+* Load admin styles for CPTs
 
 #### 0.3 / 2018-03-22
 
