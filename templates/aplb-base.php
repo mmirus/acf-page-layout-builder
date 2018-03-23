@@ -9,7 +9,7 @@ else:
     $template_loader->get_template_part('partials/styles');
 
     if (have_rows('page_section')):
-        $row_id_base = 'alp_rep_';
+        $row_id_base = 'aplb_rep_';
         while (have_rows('page_section')) : the_row();
             $row_id = $row_id_base . get_row_index();
             $subtitle = get_sub_field('subtitle');
