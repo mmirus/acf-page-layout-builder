@@ -1,3 +1,7 @@
+#### 0.5 / 2018-03-27
+
+* Add submenu content type
+
 #### 0.4 / 2018-03-23
 
 * Add body class on CPTs

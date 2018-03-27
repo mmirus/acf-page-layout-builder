@@ -6,6 +6,7 @@ Thanks to [MWDelaney's similar plugin](https://github.com/MWDelaney/acf-flexible
 
 # TODO
 
+* reduced / no padding option on sections?
 * Replace the_content instead of appending to it?
 * Enable extending content types
 * filter SEO title?

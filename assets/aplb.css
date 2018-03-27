@@ -17,6 +17,10 @@
   color: #fff;
 }
 
+.aplb-page-section.light-text a:hover {
+  color: #000;
+}
+
 .aplb-page-section.enable-shadow {
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
 }
@@ -113,7 +117,7 @@
   text-align: center;
 }
 
-.aplb .aplb-links a {
+.aplb-links a {
   position: relative;
   box-sizing: border-box;
   display: inline-block;
@@ -126,14 +130,33 @@
   border-bottom: 1px dotted rgba(0, 0, 0, 0.5);
 }
 
-.aplb .light-text .aplb-links a {
+.light-text .aplb-links a {
   border-bottom-color: rgba(255, 255, 255, 0.5);
 }
 
-.aplb .aplb-links a:hover,
-.aplb .light-text .aplb-links a:hover {
-  color: #178552;
-  border-bottom-color: #178552;
+.aplb-links a:hover,
+.light-text .aplb-links a:hover {
+  color: rgb(46, 46, 46);
+  border-bottom-color: rgb(46, 46, 46);
+}
+
+/* Submenu */
+.aplb-submenu .content {
+  -ms-grid-column: 1 / 4;
+  grid-column: 1 / 4;
+  padding: 0;
+}
+
+.aplb-submenu-items {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.aplb-submenu-items a {
+  font-size: 80%;
+  padding: 0.5rem 1rem;
 }
 
 @media (min-width: 768px) {
