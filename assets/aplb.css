@@ -46,7 +46,8 @@
 }
 
 .aplb-title {
-  -ms-grid-column: 1 / 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-column: 1 / 4;
   padding-bottom: 0;
   margin: auto auto 0;
@@ -144,7 +145,8 @@
 
 /* Submenu */
 .aplb-submenu .content {
-  -ms-grid-column: 1 / 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-column: 1 / 4;
   padding: 0;
 }
