@@ -38,6 +38,7 @@
 .aplb-page-section .content {
   position: relative;
   -ms-grid-column: 2;
+  -ms-grid-row: 1;
   grid-column: 2;
   padding: 5rem 1rem;
   overflow: hidden;
@@ -53,6 +54,7 @@
 
 .aplb-title + .content {
   padding-top: 0;
+  -ms-grid-row: 2;
 }
 
 /* Titles and subtitles */
