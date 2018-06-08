@@ -5,7 +5,7 @@ Plugin URI: https://github.com/mmirus/acf-page-layout-builder
 Description: Plugin for using Advanced Custom Fields for building custom page layouts.
 Author: Matt Mirus
 Author URI: https://github.com/mmirus
-Version: 0.5
+Version: 0.6
 GitHub Plugin URI: https://github.com/mmirus/acf-page-layout-builder
 */
 
