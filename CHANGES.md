@@ -1,3 +1,7 @@
+#### 0.61 / 2018-06-08
+
+- Exclude option element from light text styles.
+
 #### 0.6 / 2018-06-08
 
 - Fix grid layout for IE 11

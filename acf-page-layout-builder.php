@@ -5,9 +5,9 @@ Plugin URI: https://github.com/mmirus/acf-page-layout-builder
 Description: Plugin for using Advanced Custom Fields for building custom page layouts.
 Author: Matt Mirus
 Author URI: https://github.com/mmirus
-Version: 0.6
+Version: 0.61
 GitHub Plugin URI: https://github.com/mmirus/acf-page-layout-builder
-*/
+ */
 
 namespace APLB;
 
@@ -47,7 +47,7 @@ class APLB
     // Check if Advanced Custom Fields is loaded and deactivate w/ a message if not
     public function acf_check()
     {
-        if (! class_exists('acf')) {
+        if (!class_exists('acf')) {
             add_action('admin_init', [$this, 'deactivate']);
             add_action('admin_notices', [$this, 'admin_notice_no_acf']);
         }
@@ -105,8 +105,8 @@ class APLB
     public function assets()
     {
         if (is_page_template($this->page_template) || is_singular($this->post_types)) {
-            wp_enqueue_style('aplb-base', APLB_PLUGIN_URL.'assets/aplb.css', false, null);
-            wp_register_script('aplb-base', APLB_PLUGIN_URL.'assets/aplb.js', ['jquery'], false, true);
+            wp_enqueue_style('aplb-base', APLB_PLUGIN_URL . 'assets/aplb.css', false, null);
+            wp_register_script('aplb-base', APLB_PLUGIN_URL . 'assets/aplb.js', ['jquery'], false, true);
             wp_enqueue_script('aplb-base');
         }
     }
@@ -161,7 +161,7 @@ class APLB
 
     public static function hex2rgb($hexString)
     {
-        $hexString	= preg_replace("/[^abcdef0-9]/i", "", $hexString);
+        $hexString = preg_replace("/[^abcdef0-9]/i", "", $hexString);
         if (strlen($hexString) == 6) {
             list($r, $g, $b) = str_split($hexString, 2);
             return hexdec($r) . ", " . hexdec($g) . ", " . hexdec($b);

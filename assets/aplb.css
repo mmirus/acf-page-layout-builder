@@ -13,7 +13,7 @@
 }
 
 .aplb-page-section.light-text,
-.aplb-page-section.light-text :not(input):not(select) {
+.aplb-page-section.light-text :not(input):not(select):not(option) {
   color: #fff;
 }
 
