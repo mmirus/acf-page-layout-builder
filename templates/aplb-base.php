@@ -2,9 +2,11 @@
 
 namespace APLB;
 
-if (post_password_required()):
+if (post_password_required() && apply_filters('aplb_use_password_form', true)):
     echo get_the_password_form();
-else:
+endif;
+
+if (!post_password_required()):
     $template_loader = new Template_Loader();
     $template_loader->get_template_part('partials/styles');
 

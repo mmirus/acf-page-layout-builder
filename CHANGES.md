@@ -1,3 +1,7 @@
+#### 0.7 / 2018-11-08
+
+- Add filter to not show password form ('aplb_use_password_form')
+
 #### 0.61 / 2018-06-08
 
 - Exclude option element from light text styles.

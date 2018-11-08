@@ -6,21 +6,22 @@ Thanks to [MWDelaney's similar plugin](https://github.com/MWDelaney/acf-flexible
 
 # TODO
 
-* reduced / no padding option on sections?
-* Replace the_content instead of appending to it?
-* Enable extending content types
-* filter SEO title?
-* document adding taxonomies to CPT?
-* look into changing or enabling filtering of CPT slug (/aplb/post-name/)?
-* allow overriding templates per post type?
+- reduced / no padding option on sections?
+- Replace the_content instead of appending to it?
+- Enable extending content types
+- filter SEO title?
+- document adding taxonomies to CPT?
+- look into changing or enabling filtering of CPT slug (/aplb/post-name/)?
+- allow overriding templates per post type?
 
 # Table of Contents
 
-* [Overriding the page template](#overriding-the-page-template)
-* [Overriding template parts](#overriding-template-parts)
-* [Filtering the templates](#filtering-the-templates)
-  * [Example: Sage 9](#example-sage-9)
-* [Using APLB with other post types](#using-aplb-with-other-post-types)
+- [Overriding the page template](#overriding-the-page-template)
+- [Overriding template parts](#overriding-template-parts)
+- [Filtering the templates](#filtering-the-templates)
+  - [Example: Sage 9](#example-sage-9)
+- [Using APLB with other post types](#using-aplb-with-other-post-types)
+- [Prevent double password form](#prevent-double-password-form)
 
 # Overriding the page template
 
@@ -75,3 +76,13 @@ add_filter('aplb_post_types', function ($post_types) {
 ```
 
 As noted in the section on overriding template parts above, by default the layouts you create are appended to the_content in your default page template. When the layouts are built on another post type besides pages, however, the output will by default be appended to the_content in the template used for that post type following the WordPress template hierarchy.
+
+# Prevent double password form
+
+By default, APLB will show the password form instead of its content when a post is password protected. This can result in two password forms being shown if the theme is also using one on `the_content`.
+
+You can disable APLB's password form with this 'aplb_use_password_form' filter:
+
+```php
+add_filter('aplb_use_password_form', '__return_false');
+```
