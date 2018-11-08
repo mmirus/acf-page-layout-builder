@@ -81,7 +81,7 @@ As noted in the section on overriding template parts above, by default the layou
 
 By default, APLB will show the password form instead of its content when a post is password protected. This can result in two password forms being shown if the theme is also using one on `the_content`.
 
-You can disable APLB's password form with this 'aplb_use_password_form' filter:
+You can disable APLB's password form with the `aplb_use_password_form` filter:
 
 ```php
 add_filter('aplb_use_password_form', '__return_false');
