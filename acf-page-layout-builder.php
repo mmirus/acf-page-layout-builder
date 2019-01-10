@@ -5,7 +5,7 @@ Plugin URI: https://github.com/mmirus/acf-page-layout-builder
 Description: Plugin for using Advanced Custom Fields for building custom page layouts.
 Author: Matt Mirus
 Author URI: https://github.com/mmirus
-Version: 0.61
+Version: 1.0.0
 GitHub Plugin URI: https://github.com/mmirus/acf-page-layout-builder
  */
 
@@ -98,7 +98,9 @@ class APLB
     // register APLB custom post type
     public function register_post_type()
     {
-        require_once APLB_PLUGIN_DIR . 'lib/aplb-post-type.php';
+        if (class_exists('acf')) {
+            require_once APLB_PLUGIN_DIR . 'lib/aplb-post-type.php';
+        }
     }
 
     // enqueue assets

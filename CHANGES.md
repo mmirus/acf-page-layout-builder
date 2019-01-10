@@ -1,3 +1,8 @@
+#### 1.0.0 / 2019-01-10
+
+- Prevent breaking site when ACF is missing
+- Bump to 1.0.0 for semver
+
 #### 0.7 / 2018-11-08
 
 - Add filter to not show password form ('aplb_use_password_form')
