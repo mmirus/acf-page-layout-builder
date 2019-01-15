@@ -1,3 +1,7 @@
+#### 1.1.0 / 2019-01-14
+
+- Add two-column WYSIWYG layout
+
 #### 1.0.0 / 2019-01-10
 
 - Prevent breaking site when ACF is missing

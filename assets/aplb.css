@@ -13,11 +13,14 @@
 }
 
 .aplb-page-section.light-text,
-.aplb-page-section.light-text :not(input):not(select):not(option) {
+.aplb-page-section.light-text :not(input):not(select):not(option),
+.aplb-page-section .light-text,
+.aplb-page-section .light-text :not(input):not(select):not(option) {
   color: #fff;
 }
 
-.aplb-page-section.light-text a:hover {
+.aplb-page-section.light-text a:hover,
+.aplb-page-section .light-text a:hover {
   color: #000;
 }
 
@@ -88,6 +91,31 @@
 .aplb-wysiwyg {
   -ms-grid-columns: minmax(0, 1fr) minmax(1rem, 35em) minmax(0, 1fr);
   grid-template-columns: minmax(0, 1fr) minmax(1rem, 35em) minmax(0, 1fr);
+}
+
+/* Two-column WYSIWYG */
+.aplb-two_column_wysiwyg .aplb-col {
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .aplb-two_column_wysiwyg .content {
+    display: flex;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .aplb-two_column_wysiwyg .aplb-col {
+    width: 50%;
+    padding: 0 1.5rem 0 1rem;
+  }
+
+  .aplb-two_column_wysiwyg .aplb-col:last-child {
+    width: 50%;
+    padding: 0 1rem 0 1.5rem;
+  }
 }
 
 /* Quote */

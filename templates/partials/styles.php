@@ -14,7 +14,6 @@ if (have_rows('page_section')):
         $background_color = get_sub_field('background_color');
         $background_color_opacity = get_sub_field('background_color_opacity');
         $background_color_bottom_gradient = get_sub_field('background_color_bottom_gradient');
-
         $background_gradient = '';
         if (!empty($background_color_bottom_gradient)) {
             if (!empty($background_color) && !empty($background_color_opacity)) {
@@ -37,6 +36,24 @@ if (have_rows('page_section')):
         if (!empty($max_width)) {
             $aplb_styles .= "#$row_id .aplb-title { max-width: $max_width }";
         }
+
+        if (have_rows('content')):
+            while (have_rows('content')) : the_row();
+                $background_color_col1 = get_sub_field('background_color_col1');
+                $background_color_col2 = get_sub_field('background_color_col2');
+                $background_color_col1 = (!empty($background_color_col1)) ? "background: $background_color_col1;": '';
+                $background_color_col2 = (!empty($background_color_col2)) ? "background: $background_color_col2;": '';
+                $background_image_col1 = get_sub_field('background_image_col1');
+                $background_image_col1 = (!empty($background_image_col1)) ? "background-image: url($background_image_col1);" : '';
+                $background_image_col2 = get_sub_field('background_image_col2');
+                $background_image_col2 = (!empty($background_image_col2)) ? "background-image: url($background_image_col2);" : '';
+
+                $aplb_styles .= "
+                    #$row_id .aplb-col:first-child { $background_image_col1 $background_color_col1 }
+                    #$row_id .aplb-col:last-child { $background_image_col2 $background_color_col2 }
+                ";
+            endwhile;
+        endif;
 
         if ($background_color_bottom_gradient) {
             $aplb_mq_styles .= "#$row_id .section-tint { background: $background_gradient; opacity: 1; }";
